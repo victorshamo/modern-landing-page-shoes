@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif, Arial, Helvetica;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+.container {
+    //prevents things from touching the side - could also do it with padding
+    width: 85%;
+    //65*16px(default) = 1040 wide
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+//'spacing' won't do a thing, only it's direct children will with
+//a sinbling before it, in this case the 'h1' won't be changed
+.spacing >*+* {
+    margin-top: var(--spacer, 2rem);
+    //if 'spacer' doesn't work, it will be 2rem
+}
+
+.btn {
+    //without it, it will overlap the text above it - since by default '<a>' is inline 
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--clr-text, #fff);
+    text-transform: uppercase;
+    font-size: 1.125rem;
+    padding: .5em 1.25em;
+    background: var(--clr-accent, blue);
+    border-radius: .25em;
+    transition: 
+        transform 250ms ease-in-out,
+        opacity 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+    transform: scale(1.1);
+    opacity: .9;
+}
+
+.primary-title {
+    font-size: 3rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.section.title {
+
+}
+
+.hero {
+    color: white;
+    text-align: center;
+    padding: 15em 0;
+    //if the 'radial-gradient' breaks
+    background-color: #222;
+    //supports it's a media query - if the person's browser supports
+    // blend-mode this will work, otherwise they will skip this and give a 'background: #222'
+    @supports (background-blend-mode: multiply) {
+        background: url(/img/shoe-3.png),
+        radial-gradient(#444, #111);
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+    };
+
+    //background-size: 10%;
+    //this will repeat the image in smaller chunks
+}
