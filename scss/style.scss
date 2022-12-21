@@ -165,3 +165,77 @@ section {
     }
 }
 
+.product {
+    background: radial-gradient(var(--clr-inner, limegreen), var(--clr-outer, purple));
+    padding: 3em;
+    border-radius: 1em;
+    margin-bottom: 3em;
+    margin-bottom: 5em;
+    text-align: center;
+
+    &__title {
+        font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+        text-transform: uppercase;
+        line-height: 1;
+        color: #fff;
+        text-shadow: 0 0 .2em rgba(#000, .2);
+    }
+
+    &__img {
+        margin: -5em 0 0 0;
+    }
+
+        //media query - it breaks around 720 - so 720/16=45 
+        @media (min-width: 45em) {
+            text-align: left;
+            margin-bottom: 9em;
+
+            &__title {
+                margin: 0;
+            }
+
+            &__img {
+              //wraps text around content  
+              float: right;
+              width: 65%;  
+              //use it with dev tools when not using 'url', like when using 'circle' 
+              shape-outside: url(/img/shoe-1.png);
+              margin: 0 -5em 0 0;
+              shape-margin: 2em;
+            }
+
+            &.shoe-left {
+                .product__img {
+                    float: left;
+                    //text was overlapping the shoe
+                    shape-outside: url(/img/shoe-2.png);
+                    margin: 0 0 0 -5em;
+                }
+
+            }
+            
+        
+    }
+}
+
+.hero {
+    --clr-accent: #faa700;
+}
+
+.shoe-red {
+    --clr-inner: #faa700;
+    --clr-outer: #eac886;
+    --clr-accent: #a1173c;
+}
+
+.shoe-white {
+    --clr-inner: #fce4b3;
+    --clr-outer: #eac886;
+    --clr-accent: #2f4858;
+}
+
+.shoe-blue {
+    --clr-inner: #6dd5ed;
+    --clr-outer: #2193b0;
+    --clr-accent: #008951;
+}
